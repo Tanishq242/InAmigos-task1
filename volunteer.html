@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Volunteer with InAmigos Foundation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0F1712;
+            --bg-soft: #16211B;
+            --panel: #1B2820;
+            --ink: #F4EFE3;
+            --ink-soft: #AFBAB2;
+            --gold: #E3B25B;
+            --gold-dim: rgba(227, 178, 91, 0.18);
+            --sage: #6FA98F;
+            --line: rgba(244, 239, 227, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: 'Work Sans', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .top-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Fraunces', serif;
+            font-weight: 500;
+            line-height: 1.15;
+            margin: 0 0 0.4em;
+            color: var(--ink);
+        }
+
+        p {
+            margin: 0 0 1em;
+            color: var(--ink-soft);
+            max-width: 62ch;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .wrap {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        .visual {
+            position: relative;
+            border: 1.5px dashed var(--line);
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background:
+                radial-gradient(circle at 30% 20%, rgba(227, 178, 91, 0.10), transparent 55%),
+                radial-gradient(circle at 75% 80%, rgba(111, 169, 143, 0.12), transparent 55%),
+                var(--panel);
+            color: var(--ink-soft);
+            font-size: 0.85rem;
+            padding: 24px;
+            overflow: hidden;
+        }
+
+        /* ---------- Nav ---------- */
+        header.site {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: rgba(15, 23, 18, 0.7);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.4s ease, background 0.4s ease;
+        }
+
+        header.site.scrolled {
+            border-bottom-color: var(--line);
+            background: rgba(15, 23, 18, 0.92);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 32px;
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+
+        nav .brand {
+            font-family: 'Fraunces', serif;
+            font-size: 1.25rem;
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 28px;
+            margin: 0;
+            padding: 0;
+            font-size: 0.95rem;
+        }
+
+        nav a.nav-link {
+            text-decoration: none;
+            color: var(--ink-soft);
+            transition: color 0.25s ease;
+        }
+
+        nav a.nav-link:hover,
+        nav a.nav-link:focus-visible {
+            color: var(--gold);
+        }
+
+        nav a.nav-link.current {
+            color: var(--gold);
+        }
+
+        /* ---------- Hero ---------- */
+        .hero {
+            position: relative;
+            padding: 96px 32px 72px;
+            max-width: 820px;
+            margin: 0 auto;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.35;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .orb-1 {
+            width: 320px;
+            height: 320px;
+            background: var(--gold);
+            top: -140px;
+            left: -60px;
+            animation: drift1 22s ease-in-out infinite;
+        }
+
+        .orb-2 {
+            width: 260px;
+            height: 260px;
+            background: var(--sage);
+            bottom: -110px;
+            right: 0;
+            animation: drift2 26s ease-in-out infinite;
+        }
+
+        @keyframes drift1 {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(40px, 30px) scale(1.1);
+            }
+        }
+
+        @keyframes drift2 {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(-30px, -25px) scale(1.08);
+            }
+        }
+
+        .hero>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero p {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.1rem, 4vw, 2.9rem);
+        }
+
+        .intro-anim>* {
+            opacity: 0;
+            transform: translateY(18px);
+            animation: riseIn 0.7s ease forwards;
+        }
+
+        .intro-anim h1 {
+            animation-delay: 0.1s;
+        }
+
+        .intro-anim p {
+            animation-delay: 0.3s;
+        }
+
+        .intro-anim .btn {
+            animation-delay: 0.5s;
+        }
+
+        @keyframes riseIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--bg);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 14px 26px;
+            border-radius: 3px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.98rem;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+        }
+
+        .btn:hover,
+        .btn:focus-visible {
+            background: #eec177;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px -8px var(--gold-dim);
+        }
+
+        /* ---------- Section shell ---------- */
+        section {
+            padding: 64px 32px;
+        }
+
+        section h2 {
+            font-size: clamp(1.5rem, 2.4vw, 1.9rem);
+            margin-bottom: 0.6em;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.reveal-left {
+            transform: translateX(-32px);
+        }
+
+        .reveal.reveal-right {
+            transform: translateX(32px);
+        }
+
+        .reveal.is-visible {
+            opacity: 1;
+            transform: translate(0, 0);
+        }
+
+        /* ---------- Roles (alternating rows) ---------- */
+        .roles {
+            background: var(--bg-soft);
+        }
+
+        .role-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+            padding: 32px 0;
+        }
+
+        .role-row:not(:last-child) {
+            border-bottom: 1px solid var(--line);
+        }
+
+        .role-row.reverse .visual {
+            order: 2;
+        }
+
+        .role-row .visual {
+            height: 180px;
+        }
+
+        .role-row h3 {
+            font-size: 1.2rem;
+        }
+
+        /* ---------- How it works (a real sequence, so numbering is meaningful) ---------- */
+        .steps {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .step-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 32px;
+            margin-top: 40px;
+        }
+
+        .step .num {
+            font-family: 'Fraunces', serif;
+            font-size: 2rem;
+            color: var(--gold);
+            display: block;
+            margin-bottom: 0.3em;
+        }
+
+        .step h3 {
+            font-size: 1.05rem;
+        }
+
+        .step p {
+            font-size: 0.95rem;
+        }
+
+        /* ---------- Sign-up form ---------- */
+        .signup {
+            background:
+                radial-gradient(circle at 20% 20%, rgba(227, 178, 91, 0.12), transparent 55%),
+                radial-gradient(circle at 85% 80%, rgba(111, 169, 143, 0.10), transparent 55%),
+                var(--panel);
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .signup form {
+            max-width: 640px;
+            margin: 32px auto 0;
+            display: grid;
+            gap: 18px;
+        }
+
+        .field {
+            display: grid;
+            gap: 6px;
+        }
+
+        .field label {
+            font-size: 0.9rem;
+            color: var(--ink-soft);
+        }
+
+        .field input,
+        .field select,
+        .field textarea {
+            background: var(--bg-soft);
+            border: 1px solid var(--line);
+            border-radius: 3px;
+            color: var(--ink);
+            font-family: 'Work Sans', sans-serif;
+            font-size: 0.98rem;
+            padding: 12px 14px;
+            transition: border-color 0.2s ease;
+        }
+
+        .field input:focus,
+        .field select:focus,
+        .field textarea:focus {
+            outline: 2px solid var(--gold);
+            outline-offset: 1px;
+            border-color: var(--gold);
+        }
+
+        .field-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .signup .btn {
+            justify-self: start;
+        }
+
+        .form-note {
+            font-size: 0.85rem;
+            color: var(--ink-soft);
+            margin-top: 4px;
+        }
+
+        /* ---------- Footer ---------- */
+        footer {
+            padding: 40px 32px;
+            text-align: center;
+            color: var(--ink-soft);
+            font-size: 0.9rem;
+        }
+
+        footer .socials {
+            display: flex;
+            gap: 18px;
+            justify-content: center;
+            margin-top: 10px;
+            list-style: none;
+            padding: 0;
+        }
+
+        footer a {
+            text-decoration: none;
+            transition: color 0.25s ease;
+        }
+
+        footer a:hover,
+        footer a:focus-visible {
+            color: var(--gold);
+        }
+
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 2px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            .orb {
+                animation: none;
+            }
+
+            .intro-anim>* {
+                animation: none;
+                opacity: 1;
+                transform: none;
+            }
+
+            .reveal {
+                transition: none;
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        @media (max-width:760px) {
+            nav ul {
+                display: none;
+            }
+
+            .role-row,
+            .role-row.reverse {
+                grid-template-columns: 1fr;
+            }
+
+            .role-row .visual {
+                order: 0 !important;
+                height: 160px;
+            }
+
+            .field-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="site" id="siteHeader">
+        <nav>
+            <div class="top-box">
+                <img src="Images/17442.png" alt="" width="10%">
+                <span class="brand">InAmigos Foundation</span>
+            </div>
+            <ul>
+                <li><a class="nav-link" href="index.html#about">About</a></li>
+                <li><a class="nav-link" href="index.html#projects">Projects</a></li>
+                <li><a class="nav-link current" href="volunteer.html">Volunteer</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+        <div class="intro-anim">
+            <h1>Volunteer with us</h1>
+            <p>Make a difference by giving your time, skills, and ideas to a cause that matters. As a volunteer, you can
+                work with our team, support meaningful initiatives, and contribute to the community.</p>
+            <a class="btn" href="#signup">Apply to volunteer</a>
+        </div>
+    </section>
+
+    <!-- ============ WAYS TO HELP ============ -->
+    <section class="roles" id="roles">
+        <div class="wrap">
+            <h2 class="reveal">Ways to get involved</h2>
+            <p class="reveal">[One line introducing the range of roles below — something for different amounts of time
+                and different skills.]</p>
+
+            <div class="role-row">
+                <div class="visual reveal reveal-left"><img src="Images/1738081237.jpg" alt=""
+                        style="transform: translateY(100px);"></div>
+                <div class="reveal reveal-right">
+                    <h3>Faiz Khan</h3>
+                    <p>Volunteer Supervisor Uttar pradesh</p>
+                </div>
+            </div>
+
+            <div class="role-row reverse">
+                <div class="visual reveal reveal-right"><img src="Images/1738127845.jpg" alt=""
+                        style="transform: translateY(100px);"></div>
+                <div class="reveal reveal-left" style="text-align: end;">
+                    <h3>Manavi jaiswal</h3>
+                    <p>Junior Volunteer Associate</p>
+                </div>
+            </div>
+
+            <div class="role-row">
+                <div class="visual reveal reveal-left"><img src="Images/1738080678.jpg" alt=""
+                        style="transform: translateY(100px);"></div>
+                <div class="reveal reveal-right">
+                    <h3>Akash</h3>
+                    <p>Volunteer Associate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ HOW IT WORKS ============ -->
+    <section class="steps">
+        <div class="wrap">
+            <h2 class="reveal">How it works</h2>
+            <p class="reveal">[One line setting expectations — how long the process takes from applying to starting.]
+            </p>
+            <div class="step-list">
+                <div class="step reveal">
+                    <span class="num">1</span>
+                    <h3>Apply</h3>
+                    <p>[Fill out the form below with your interests and availability.]</p>
+                </div>
+                <div class="step reveal">
+                    <span class="num">2</span>
+                    <h3>Orientation call</h3>
+                    <p>[A short call to walk through our work and answer questions.]</p>
+                </div>
+                <div class="step reveal">
+                    <span class="num">3</span>
+                    <h3>Get matched</h3>
+                    <p>[We match you to a project based on your interests and skills.]</p>
+                </div>
+                <div class="step reveal">
+                    <span class="num">4</span>
+                    <h3>Start volunteering</h3>
+                    <p>[Join the team and get ongoing support from a project lead.]</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SIGN-UP FORM ============ -->
+    <section class="signup reveal" id="signup">
+        <div class="wrap">
+            <h2>Apply to volunteer</h2>
+            <p>Your time can make a difference. Join us as a volunteer today.</p>
+
+            <!-- This form doesn't submit anywhere yet — either point the action
+         at a form backend (Google Forms, Formspree, your own API) or
+         wire up the JS below to send the data where you need it. -->
+            <form id="volunteerForm">
+                <div class="field-row">
+                    <div class="field">
+                        <label for="name">Full name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="field">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+                <div class="field-row">
+                    <div class="field">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="field">
+                        <label for="area">Area of interest</label>
+                        <select id="area" name="area">
+                            <option>Field volunteer</option>
+                            <option>Content & outreach</option>
+                            <option>Event & workshop support</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="availability">Availability</label>
+                    <input type="text" id="availability" name="availability"
+                        placeholder="[e.g. weekends, 2–3 hours a week]">
+                </div>
+                <div class="field">
+                    <label for="message">Anything else you'd like us to know?</label>
+                    <textarea id="message" name="message" rows="4"></textarea>
+                </div>
+                <button type="submit" class="btn">Submit application</button>
+                <p class="form-note" id="formNote">[We'll get back to you within a few days.]</p>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div>InAmigos Foundation · Bilaspur, Chhattisgarh</div>
+        <div>inamigosfoundation@gmail.com · +91 626 730 9902</div>
+        <ul class="socials">
+            <li><a href="https://www.instagram.com/inamigos/">Instagram</a></li>
+            <li><a href="https://www.linkedin.com/company/inamigos-foundation/posts/">LinkedIn</a></li>
+            <li><a href="https://www.facebook.com/InAmigos">Facebook</a></li>
+        </ul>
+    </footer>
+
+    <script>
+        var header = document.getElementById('siteHeader');
+        window.addEventListener('scroll', function () {
+            header.classList.toggle('scrolled', window.scrollY > 12);
+        });
+
+        var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        var revealEls = document.querySelectorAll('.reveal');
+        if ('IntersectionObserver' in window && !reduceMotion) {
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        io.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+            revealEls.forEach(function (el) { io.observe(el); });
+        } else {
+            revealEls.forEach(function (el) { el.classList.add('is-visible'); });
+        }
+
+        // Placeholder submit handling — replace with a real backend/form service.
+        var form = document.getElementById('volunteerForm');
+        var note = document.getElementById('formNote');
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            note.textContent = 'Thanks — this is a template, so hook this form up to your backend or a form service to actually receive applications.';
+        });
+    </script>
+
+</body>
+
+</html>
